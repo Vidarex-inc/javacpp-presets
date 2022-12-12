@@ -83,13 +83,13 @@ jobs:
       - uses: ./.github/actions/deploy-ubuntu
   linux-x86:
     runs-on: ubuntu-20.04
-    container: quay.io/fedora/fedora:37
+    container: centos:7
     strategy:
       matrix:
         ext: ["", -gpl]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/deploy-fedora
+      - uses: ./.github/actions/deploy-centos
   linux-x86_64:
     runs-on: ubuntu-20.04
     container: quay.io/fedora/fedora:37
