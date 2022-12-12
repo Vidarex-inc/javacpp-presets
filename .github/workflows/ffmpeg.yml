@@ -95,7 +95,7 @@ jobs:
     container: quay.io/fedora/fedora:37
     strategy:
       matrix:
-        ext: ["", -gpl]
+        ext: [""]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/deploy-fedora
