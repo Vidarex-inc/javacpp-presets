@@ -32,10 +32,6 @@ runs:
           export MAVEN_OPTIONS="-Djavacpp.platform.root=$(pwd)/android-ndk/ -Djava.library.path="
         fi
 
-        if [[ $CI_DEPLOY_PLATFORM == "linux-x86" ]]; then
-          rpm -qa | sed s/.x86_64$/.i686/ | xargs dnf -q -y install
-        fi
-
         if [[ -n ${CI_DEPLOY_NEED_BAZEL:-} ]]; then
           dnf copr enable vbatts/bazel
           dnf install bazel

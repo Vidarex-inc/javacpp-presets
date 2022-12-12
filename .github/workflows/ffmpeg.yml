@@ -83,24 +83,20 @@ jobs:
       - uses: ./.github/actions/deploy-ubuntu
   linux-x86:
     runs-on: ubuntu-20.04
-    container: quay.io/fedora/fedora:37
+    container: centos:7
     strategy:
       matrix:
         ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/deploy-fedora
-      # TODO: Remove artifact upload
-      - uses: actions/upload-artifact@v3
-        with:
-          name: m2-repo
-          path: /root/.m2/repository/
+      - uses: ./.github/actions/deploy-centos
   linux-x86_64:
     runs-on: ubuntu-20.04
     container: quay.io/fedora/fedora:37
-    strategy:
-      matrix:
-        ext: [ "", -gpl ]
+    # TODO: Reenable GPL builds
+    #strategy:
+    #  matrix:
+    #    ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/deploy-fedora

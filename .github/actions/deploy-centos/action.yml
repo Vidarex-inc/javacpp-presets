@@ -1,5 +1,4 @@
 name: Deploy on CentOS
-description: Deploy on CentOS
 runs:
   using: composite
   steps:
