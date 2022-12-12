@@ -99,6 +99,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/deploy-fedora
+      - uses: actions/upload-artifact@v3
+        with:
+          name: m2-repo
+          path: /root/.m2/repository/
 #  macosx-arm64:
 #    runs-on: macos-11
 #    strategy:

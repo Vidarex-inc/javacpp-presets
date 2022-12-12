@@ -200,8 +200,8 @@ runs:
         fi
         df -h
 
-    - name: Clean up
-      shell: bash
-      run: |
-        cd /root
-        rm -Rf $(find .m2/repository/ -name '*SNAPSHOT*')
+#    - name: Clean up
+#      shell: bash
+#      run: |
+#        cd /root
+#        rm -Rf $(find .m2/repository/ -name '*SNAPSHOT*')
