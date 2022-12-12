@@ -13,130 +13,132 @@ env:
   CI_DEPLOY_NEED_GCC: 1
   CI_DEPLOY_MODULE: ${{ github.workflow }}
   CI_DEPLOY_PLATFORM: ${{ github.job }}
-#  CI_DEPLOY_SETTINGS: ${{ secrets.CI_DEPLOY_SETTINGS }}
-#  CI_DEPLOY_USERNAME: ${{ secrets.CI_DEPLOY_USERNAME }}
-#  CI_DEPLOY_PASSWORD: ${{ secrets.CI_DEPLOY_PASSWORD }}
-#  STAGING_REPOSITORY: ${{ secrets.STAGING_REPOSITORY }}
+  CI_DEPLOY_SETTINGS: ${{ secrets.CI_DEPLOY_SETTINGS }}
+  CI_DEPLOY_USERNAME: ${{ secrets.CI_DEPLOY_USERNAME }}
+  CI_DEPLOY_PASSWORD: ${{ secrets.CI_DEPLOY_PASSWORD }}
+  STAGING_REPOSITORY: ${{ secrets.STAGING_REPOSITORY }}
 jobs:
-#  android-arm:
-#    runs-on: ubuntu-20.04
-#    container: centos:7
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-centos
-#  android-arm64:
-#    runs-on: ubuntu-20.04
-#    container: centos:7
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-centos
-#  android-x86:
-#    runs-on: ubuntu-20.04
-#    container: centos:7
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-centos
-#  android-x86_64:
-#    runs-on: ubuntu-20.04
-#    container: centos:7
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-centos
-#  linux-armhf:
-#    runs-on: ubuntu-20.04
-#    container: ubuntu:bionic
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-ubuntu
-#  linux-arm64:
-#    runs-on: ubuntu-20.04
-#    container: ubuntu:bionic
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-ubuntu
-#  linux-ppc64le:
-#    runs-on: ubuntu-20.04
-#    container: ubuntu:bionic
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-ubuntu
-#  linux-x86:
-#    runs-on: ubuntu-20.04
-#    container: centos:7
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-centos
+  android-arm:
+    runs-on: ubuntu-20.04
+    container: centos:7
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
+  android-arm64:
+    runs-on: ubuntu-20.04
+    container: centos:7
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
+  android-x86:
+    runs-on: ubuntu-20.04
+    container: centos:7
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
+  android-x86_64:
+    runs-on: ubuntu-20.04
+    container: centos:7
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
+  linux-armhf:
+    runs-on: ubuntu-20.04
+    container: ubuntu:bionic
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-ubuntu
+  linux-arm64:
+    runs-on: ubuntu-20.04
+    container: ubuntu:bionic
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-ubuntu
+  linux-ppc64le:
+    runs-on: ubuntu-20.04
+    container: ubuntu:bionic
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-ubuntu
+  linux-x86:
+    runs-on: ubuntu-20.04
+    container: centos:7
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
   linux-x86_64:
     runs-on: ubuntu-20.04
     container: quay.io/fedora/fedora:37
-    strategy:
-      matrix:
-        ext: [""]
+    # TODO: Reenable GPL builds
+    #strategy:
+    #  matrix:
+    #    ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/deploy-fedora
+      # TODO: Remove artifact upload
       - uses: actions/upload-artifact@v3
         with:
           name: m2-repo
           path: /root/.m2/repository/
-#  macosx-arm64:
-#    runs-on: macos-11
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-macosx
-#  macosx-x86_64:
-#    runs-on: macos-11
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-macosx
-#  windows-x86:
-#    runs-on: windows-2019
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-windows
-#  windows-x86_64:
-#    runs-on: windows-2019
-#    strategy:
-#      matrix:
-#        ext: ["", -gpl]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: ./.github/actions/deploy-windows
+  macosx-arm64:
+    runs-on: macos-11
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-macosx
+  macosx-x86_64:
+    runs-on: macos-11
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-macosx
+  windows-x86:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-windows
+  windows-x86_64:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-windows
   redeploy:
-    needs: [linux-x86_64]
+    needs: [ linux-x86_64 ]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
