@@ -25,7 +25,8 @@ jobs:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-centos@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
   android-arm64:
     runs-on: ubuntu-20.04
     container: centos:7
@@ -33,7 +34,8 @@ jobs:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-centos@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
   android-x86:
     runs-on: ubuntu-20.04
     container: centos:7
@@ -41,7 +43,8 @@ jobs:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-centos@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
   android-x86_64:
     runs-on: ubuntu-20.04
     container: centos:7
@@ -49,7 +52,8 @@ jobs:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-centos@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-centos
   linux-armhf:
     runs-on: ubuntu-20.04
     container: ubuntu:bionic
@@ -57,7 +61,8 @@ jobs:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-ubuntu@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-ubuntu
   linux-arm64:
     runs-on: ubuntu-20.04
     container: ubuntu:bionic
@@ -65,7 +70,8 @@ jobs:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-ubuntu@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-ubuntu
   linux-ppc64le:
     runs-on: ubuntu-20.04
     container: ubuntu:bionic
@@ -73,53 +79,61 @@ jobs:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-ubuntu@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-ubuntu
   linux-x86:
     runs-on: ubuntu-20.04
-    container: centos:7
+    container: quay.io/fedora/fedora:37
     strategy:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-centos@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-fedora
   linux-x86_64:
     runs-on: ubuntu-20.04
-    container: centos:7
+    container: quay.io/fedora/fedora:37
     strategy:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-centos@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-fedora
   macosx-arm64:
     runs-on: macos-11
     strategy:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-macosx@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-macosx
   macosx-x86_64:
     runs-on: macos-11
     strategy:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-macosx@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-macosx
   windows-x86:
     runs-on: windows-2019
     strategy:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-windows@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-windows
   windows-x86_64:
     runs-on: windows-2019
     strategy:
       matrix:
         ext: ["", -gpl]
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/deploy-windows@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/deploy-windows
   redeploy:
     needs: [android-arm, android-arm64, android-x86, android-x86_64, linux-armhf, linux-arm64, linux-ppc64le, linux-x86, linux-x86_64, macosx-arm64, macosx-x86_64, windows-x86, windows-x86_64]
     runs-on: ubuntu-20.04
     steps:
-      - uses: bytedeco/javacpp-presets/.github/actions/redeploy@actions
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/redeploy
