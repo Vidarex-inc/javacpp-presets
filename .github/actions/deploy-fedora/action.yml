@@ -13,7 +13,7 @@ runs:
         echo "sloppiness = file_macro,include_file_ctime,include_file_mtime,pch_defines,time_macros" >> .ccache/ccache.conf
 
         FEDORA_VERSION=$(rpm -E %fedora)
-        dnf update
+        dnf update -y
         dnf install -y dnf-plugins-core
 
         dnf -y install ant boost-devel ccache cmake maven git clang gcc-c++ gcc-gfortran java-1.8.0-openjdk-devel python3 python3-devel python3-pip swig file which wget unzip tar bzip2 gzip xz patch autoconf-archive automake make libtool bison flex perl nasm alsa-lib-devel freeglut-devel gtk2-devel libusb-compat-0.1-devel libusb1-devel libcurl-devel expat-devel gettext-devel openssl-devel bzip2-devel zlib-devel SDL2-devel libva-devel libxkbcommon-devel libxkbcommon-x11-devel "xcb-util*" fontconfig-devel libffi-devel ragel ocl-icd-devel GeoIP-devel pcre-devel ssdeep-devel yajl-devel
