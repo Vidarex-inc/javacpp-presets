@@ -20,43 +20,63 @@ env:
 jobs:
   android-arm:
     runs-on: ubuntu-20.04
-    container: centos:7
+    container: quay.io/fedora/fedora:37
     strategy:
       matrix:
         ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/deploy-centos
+      - uses: ./.github/actions/deploy-fedora
+      # TODO: Remove artifact upload
+      - uses: actions/upload-artifact@v3
+        with:
+          name: m2-repo
+          path: /root/.m2/repository/
   android-arm64:
     runs-on: ubuntu-20.04
-    container: centos:7
+    container: quay.io/fedora/fedora:37
     strategy:
       matrix:
         ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/deploy-centos
+      - uses: ./.github/actions/deploy-fedora
+      # TODO: Remove artifact upload
+      - uses: actions/upload-artifact@v3
+        with:
+          name: m2-repo
+          path: /root/.m2/repository/
   android-x86:
     runs-on: ubuntu-20.04
-    container: centos:7
+    container: quay.io/fedora/fedora:37
     strategy:
       matrix:
         ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/deploy-centos
+      - uses: ./.github/actions/deploy-fedora
+      # TODO: Remove artifact upload
+      - uses: actions/upload-artifact@v3
+        with:
+          name: m2-repo
+          path: /root/.m2/repository/
   android-x86_64:
     runs-on: ubuntu-20.04
-    container: centos:7
+    container: quay.io/fedora/fedora:37
     strategy:
       matrix:
         ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/deploy-centos
+      - uses: ./.github/actions/deploy-fedora
+      # TODO: Remove artifact upload
+      - uses: actions/upload-artifact@v3
+        with:
+          name: m2-repo
+          path: /root/.m2/repository/
   linux-armhf:
     runs-on: ubuntu-20.04
-    container: ubuntu:bionic
+    container: ubuntu:jammy
     strategy:
       matrix:
         ext: [ "", -gpl ]
@@ -65,7 +85,7 @@ jobs:
       - uses: ./.github/actions/deploy-ubuntu
   linux-arm64:
     runs-on: ubuntu-20.04
-    container: ubuntu:bionic
+    container: ubuntu:jammy
     strategy:
       matrix:
         ext: [ "", -gpl ]
@@ -74,7 +94,7 @@ jobs:
       - uses: ./.github/actions/deploy-ubuntu
   linux-ppc64le:
     runs-on: ubuntu-20.04
-    container: ubuntu:bionic
+    container: ubuntu:jammy
     strategy:
       matrix:
         ext: [ "", -gpl ]
@@ -93,10 +113,9 @@ jobs:
   linux-x86_64:
     runs-on: ubuntu-20.04
     container: quay.io/fedora/fedora:37
-    # TODO: Reenable GPL builds
-    #strategy:
-    #  matrix:
-    #    ext: [ "", -gpl ]
+    strategy:
+      matrix:
+        ext: [ "", -gpl ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/deploy-fedora
