@@ -103,8 +103,8 @@ runs:
 
         export MAKEJ=$(getconf _NPROCESSORS_ONLN)
         echo Fetching $GITHUB_REPOSITORY@$GITHUB_SHA
-        git clone --depth 1 https://github.com/$GITHUB_REPOSITORY repo
-        cd repo
+        git init
+        git fetch --depth 1 https://github.com/$GITHUB_REPOSITORY $GITHUB_SHA
         git checkout $GITHUB_SHA
         git submodule update --init --recursive
         git submodule foreach --recursive 'git reset --hard'
