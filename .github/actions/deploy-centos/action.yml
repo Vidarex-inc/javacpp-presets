@@ -105,10 +105,10 @@ runs:
           rpmbuild -bs rpmbuild/SPECS/libva.spec
           if [[ $CI_DEPLOY_PLATFORM == "linux-x86" ]]; then
             mock -r centos-7-i386 --rebuild rpmbuild/SRPMS/libva-2.16.0-1.el7.src.rpm
-            yum -y install /var/lib/mock/centos-7-i386/result/libva-devel-2.16.0-1.el7.i686.rpm
+            yum -y install /var/lib/mock/centos-7-i386/result/libva-2.16.0-1.el7.i686.rpm /var/lib/mock/centos-7-i386/result/libva-devel-2.16.0-1.el7.i686.rpm
           else
             mock -r centos-7-x86_64 --rebuild rpmbuild/SRPMS/libva-2.16.0-1.el7.src.rpm
-            yum -y install /var/lib/mock/centos-7-x86_64/result/libva-devel-2.16.0-1.el7.x86_64.rpm
+            yum -y install /var/lib/mock/centos-7-x86_64/result/libva-2.16.0-1.el7.x86_64.rpm /var/lib/mock/centos-7-x86_64/result/libva-devel-2.16.0-1.el7.x86_64.rpm
           fi
       
           popd
